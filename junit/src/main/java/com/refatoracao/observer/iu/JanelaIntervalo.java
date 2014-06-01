@@ -15,7 +15,6 @@ public class JanelaIntervalo implements Observador{
 		this.intervalo = intervalo;
 	}
 	
-	@Override
 	public void atualizado(int inicio, int fim, int tamanho) {
 		this.inicio = String.valueOf(inicio);
 		this.fim = String.valueOf(fim);

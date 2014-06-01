@@ -1,8 +1,10 @@
 package com.refatoracao.valor;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.refatoracao.valor.Pessoa;
 
 
 public class PessoaTest {
@@ -69,4 +71,23 @@ public class PessoaTest {
 
 		assertEquals(34,pessoa.idade());
 	}
+	
+	@Test
+	public void pesoPorPessoa(){
+		Pessoa pessoaComPeso = new Pessoa("Tiago", "Costa", 9, 1986, 90.5);
+		
+		pessoaComPeso.alterarPeso(80.1);
+		
+		assertEquals((Double)80.1, pessoaComPeso.retornaPeso());
+	}
+	
+	@Test
+	public void definiAltura(){
+		Pessoa pessoaComAltura = new Pessoa("Tiago", "Costa", 9, 1986, 80.0, 1.78);
+		
+		pessoaComAltura.redefinirAltura(1.90);
+		
+		assertEquals((Double)1.90, pessoaComAltura.retornaAltura());
+	}
+	
 }
