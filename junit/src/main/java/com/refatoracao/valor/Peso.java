@@ -16,4 +16,16 @@ public class Peso {
 	public Peso alterarPeso(Double peso){
 		return new Peso(peso);
 	}
+
+	public boolean menorQue(Double peso) {
+		return this.peso < peso;
+	}
+
+	public String pesoComoString() {
+		return  String.valueOf(peso);
+	}
+
+	public boolean maiorQue(double peso) {
+		return this.peso > peso;
+	}
 }

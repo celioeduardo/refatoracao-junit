@@ -58,8 +58,18 @@ public class Pessoa {
 		nome = nome.renomear(primeiroNome, sobrenome);
 	}
 	
-	public void alterarPeso(Double quilos){
-		peso = peso.alterarPeso(quilos);
+	public void emagrecer(Double quilos){
+		if (peso.menorQue(quilos))
+			throw new IllegalArgumentException("Novo Peso " + quilos 
+					+ "tem que ser menor que o anterior."+peso.pesoComoString());
+		
+		setPeso(peso.alterarPeso(quilos));
+	}
+	
+	private void setPeso(Peso peso){
+		if (peso == null)
+			throw new IllegalArgumentException("Peso não pode ser nulo");
+		this.peso = peso;
 	}
 	
 	public void redefinirAltura(Double metros) {
@@ -70,12 +80,19 @@ public class Pessoa {
 		return idade.idade();
 	}
 	
-	public Double retornaPeso(){
+	public Double peso(){
 		return peso.peso();
 	} 
 	
 	public Double retornaAltura(){
 		return altura.altura();
+	}
+
+	public void engordar(double novoPeso) {
+		if (peso.maiorQue(novoPeso))
+			throw new IllegalArgumentException("Novo Peso" + novoPeso 
+					+"tem que ser maior que o anterior."+peso.pesoComoString());
+		setPeso(peso.alterarPeso(novoPeso));
 	}
 
 
