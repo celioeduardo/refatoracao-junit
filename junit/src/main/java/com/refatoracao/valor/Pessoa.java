@@ -58,24 +58,6 @@ public class Pessoa {
 		nome = nome.renomear(primeiroNome, sobrenome);
 	}
 	
-	public void emagrecer(Double quilos){
-		if (peso.menorQue(quilos))
-			throw new IllegalArgumentException("Novo Peso " + quilos 
-					+ "tem que ser menor que o anterior."+peso.pesoComoString());
-		
-		setPeso(peso.alterarPeso(quilos));
-	}
-	
-	private void setPeso(Peso peso){
-		if (peso == null)
-			throw new IllegalArgumentException("Peso n√£o pode ser nulo");
-		this.peso = peso;
-	}
-	
-	public void redefinirAltura(Double metros) {
-		altura = altura.redefinirAltura(metros);
-	}
-	
 	public int idade() {
 		return idade.idade();
 	}
@@ -84,16 +66,49 @@ public class Pessoa {
 		return peso.peso();
 	} 
 	
-	public Double retornaAltura(){
+	public Double altura(){
 		return altura.altura();
 	}
 
+	public void emagrecer(Double quilos){
+		if (peso.menorQue(quilos))
+			throw new IllegalArgumentException("Novo Peso " + quilos 
+					+ "tem que ser menor que o anterior."+peso.pesoComoString());
+		
+		setPeso(peso.alterarPeso(quilos));
+	}
+	
 	public void engordar(double novoPeso) {
 		if (peso.maiorQue(novoPeso))
 			throw new IllegalArgumentException("Novo Peso" + novoPeso 
 					+"tem que ser maior que o anterior."+peso.pesoComoString());
 		setPeso(peso.alterarPeso(novoPeso));
 	}
+	
+	private void setPeso(Peso peso){
+		if (peso == null)
+			throw new IllegalArgumentException("Peso n„o pode ser nulo");
+		this.peso = peso;
+	}
+	
+	public void crescer(Double novaAltura) {
+		if(altura.maiorQue(novaAltura))
+			throw new IllegalArgumentException("Nova altura: " + novaAltura
+					+ "tem que ser maior que altura anterior"+altura.alturacomoString());
+		setAltura(altura.alterarAltura(novaAltura));
+	}
 
+	public void encolher(double novaAltura) {
+		if(altura.menorQue(novaAltura))
+			throw new IllegalArgumentException("Nova altura: " + novaAltura
+					+ "tem que ser menor que altura anterior" + altura.alturacomoString());
+		setAltura(altura.alterarAltura(novaAltura));		
+	}
+	
+	private void setAltura(Altura altura){
+		if(altura == null)
+			throw new IllegalArgumentException("Altura n„o pode ser nula");
+		this.altura = altura;
+	}
 
 }

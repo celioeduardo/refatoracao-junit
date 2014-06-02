@@ -70,44 +70,5 @@ public class PessoaTest {
 		Pessoa pessoa = new Pessoa("Nome","Sobrenome",6,1980);
 
 		assertEquals(34,pessoa.idade());
-	}
-	
-	@Test
-	public void dieta(){
-		Pessoa pessoaComPeso = new Pessoa("Tiago", "Costa", 9, 1986, 90.5);
-		
-		pessoaComPeso.emagrecer(80.1);
-		
-		assertEquals((Double)80.1, pessoaComPeso.peso());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void naDietaPerdesePeso(){
-		Pessoa pessoaComPeso = new Pessoa("Tiago", "Costa", 9, 1986, 90.5);
-		pessoaComPeso.emagrecer(91.0);
-	}
-	
-	@Test
-	public void ganharPeso() {
-		Pessoa pessoaComPeso = new Pessoa("Tiago", "Costa", 9, 1986, 80.1);
-		
-		pessoaComPeso.engordar(90.5);
-		
-		assertEquals((Double)90.5, pessoaComPeso.peso());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void quandoEngordaGanhasePeso(){
-		Pessoa pessoaComPeso = new Pessoa("Tiago", "Costa", 9, 1986, 90.5);
-		pessoaComPeso.engordar(81.0);
-	}
-	@Test
-	public void definirAltura(){
-		Pessoa pessoaComAltura = new Pessoa("Tiago", "Costa", 9, 1986, 80.0, 1.78);
-		
-		pessoaComAltura.redefinirAltura(1.90);
-		
-		assertEquals((Double)1.90, pessoaComAltura.retornaAltura());
-	}
-	
+	}	
 }
