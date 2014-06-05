@@ -23,6 +23,7 @@ public class PessoaCpfTest {
 		Pessoa pessoaComCpf = new Pessoa("Murilo", "Tokunaga", "37507458890");
 		pessoaComCpf.validar("12345678911");
 		pessoaComCpf.validar("11111111111");
+		pessoaComCpf.validar("00000000000");
 		pessoaComCpf.validar("123456789");
 		pessoaComCpf.validar("");
 	}
