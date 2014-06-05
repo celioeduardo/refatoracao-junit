@@ -5,6 +5,7 @@ public class Pessoa {
 	private Idade idade;
 	private Peso peso;
 	private Altura altura;
+	private Cpf cpf;
 	
 	public Pessoa(String primeiroNome, String sobrenome) {
 		this.nome = new Nome(primeiroNome, sobrenome);
@@ -26,12 +27,20 @@ public class Pessoa {
 		this.peso = new Peso(peso);
 	}
 	
-
 	public Pessoa(String primeiroNome, String sobrenome, int mes, int ano, Double peso, Double altura) {
 		this.nome = new Nome(primeiroNome, sobrenome);
 		this.idade = new Idade(mes, ano);
 		this.peso = new Peso(peso);
         this.altura = new Altura(altura);
+	}
+
+	public Pessoa(String primeiroNome, String sobrenome, String cpf) {		
+		this.nome = new Nome(primeiroNome, sobrenome);
+		this.cpf = new Cpf(cpf);
+	}
+	
+	public String cpf(){
+		return cpf.cpf();
 	}
 
 	public String nome() {
@@ -98,7 +107,7 @@ public class Pessoa {
 		setAltura(altura.alterarAltura(novaAltura));
 	}
 
-	public void encolher(double novaAltura) {
+	public void encolher(Double novaAltura) {
 		if(altura.menorQue(novaAltura))
 			throw new IllegalArgumentException("Nova altura: " + novaAltura
 					+ "tem que ser menor que altura anterior" + altura.alturacomoString());
@@ -110,5 +119,11 @@ public class Pessoa {
 			throw new IllegalArgumentException("Altura não pode ser nula");
 		this.altura = altura;
 	}
+	
+	public void validar(String novoCpf){
+		if(!cpf.eValido(novoCpf))
+			throw new IllegalArgumentException("Cpf Invalido");
+	}
+	
 
 }
