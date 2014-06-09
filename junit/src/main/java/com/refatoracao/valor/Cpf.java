@@ -2,19 +2,24 @@ package com.refatoracao.valor;
 
 import java.util.InputMismatchException;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 public class Cpf {
 
 	private String cpf;
 	
 	public Cpf(String cpf) {
 		this.cpf = cpf;
+		if (!this.eValido(cpf))
+			throw new IllegalArgumentException("CPF inválido");
 	}
 
-	public String cpf() {
-		return cpf;
+	public Cpf(long cpf) {
+		this(String.valueOf(cpf));
 	}
 
-	public boolean eValido(String novoCpf) {
+	private boolean eValido(String novoCpf) {
 		
 		if (cpf.equals("00000000000") || cpf.equals("11111111111") 
 				|| cpf.equals("22222222222") || cpf.equals("33333333333") 
@@ -65,5 +70,36 @@ public class Cpf {
 		} catch (InputMismatchException erro) {
 			return false;
 		}
+		
+		
 	}
+	
+	@Override
+	public boolean equals(Object objeto) {
+		boolean objetosIguais = false;
+
+		if (objeto != null && this.getClass() == objeto.getClass()) {
+			Cpf objetoTipado = (Cpf) objeto;
+			objetosIguais = new EqualsBuilder()
+				.append(cpf, objetoTipado.cpf)
+				.isEquals();
+		}
+
+		return objetosIguais;
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(9519,7)
+			.append(cpf)
+			.toHashCode();
+	}
+	
+	@Override
+	public String toString() {
+		return "Cpf [cpf=" 
+				+ cpf 
+				+ "]";
+	}
+
 }
