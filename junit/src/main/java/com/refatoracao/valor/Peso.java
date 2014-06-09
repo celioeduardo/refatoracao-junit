@@ -21,11 +21,12 @@ public class Peso {
 		return this.peso < peso;
 	}
 
+	public boolean maiorQue(double peso) {
+		return this.peso > peso;
+	}
+	
 	public String pesoComoString() {
 		return  String.valueOf(peso);
 	}
 
-	public boolean maiorQue(double peso) {
-		return this.peso > peso;
-	}
 }
