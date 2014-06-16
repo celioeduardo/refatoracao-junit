@@ -1,7 +1,8 @@
 package com.refatoracao.valor;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class CnpjTest {
@@ -19,6 +20,15 @@ public class CnpjTest {
 	@Test
 	public void cnpjComLong() {
 		new Cnpj(11222333000181L);
+	}
+	
+	@Test
+	public void igualdade(){
+		assertEquals(new Cnpj(11222333000181L),new Cnpj(11222333000181L));
+	}
+	@Test
+	public void igualdadeComCnpjFormatado(){
+		assertEquals(new Cnpj(11222333000181L),new Cnpj("11.222.333/0001-81"));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)

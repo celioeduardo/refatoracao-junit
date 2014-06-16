@@ -59,7 +59,7 @@ public class Dinheiro {
 		return dinheiro;
 	}
 	private void assercaoMesmaMoedaQue(Dinheiro outro) {
-		if (this.moeda().equals(outro))
+		if (!this.moeda().equals(outro.moeda()))
 			throw new IllegalArgumentException(this.moeda + " diferente " + outro.moeda);		
 	}
 	public static Dinheiro emDolares(double quantia){

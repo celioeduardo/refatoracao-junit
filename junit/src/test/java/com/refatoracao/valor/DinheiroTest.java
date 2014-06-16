@@ -1,15 +1,15 @@
 package com.refatoracao.valor;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class DinheiroTest {
 
 	@Test
-	public void novo(){
-		Dinheiro grana = new Dinheiro(100);		
-		assertTrue(new Dinheiro(100).equals(grana));
+	public void novoDinheiroEmReais(){
+		Dinheiro grana = new Dinheiro(100);
+		assertEquals(new Dinheiro(100),grana);
 	}
 	@Test
 	public void somarDinheiro(){
@@ -40,5 +40,11 @@ public class DinheiroTest {
 		real = real.vezes(5);
 		produto = Dinheiro.emReais(500);
 		assertTrue(produto.equals(real));	
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void naoPossoSomarMoedasDiferentes(){
+		Dinheiro dolar = Dinheiro.emDolares(100);
+		Dinheiro real = Dinheiro.emReais(200);
+		dolar.adicionar(real);
 	}
 }
