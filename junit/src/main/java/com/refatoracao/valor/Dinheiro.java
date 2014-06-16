@@ -7,6 +7,12 @@ public class Dinheiro {
 	private long quantia;
 	private Currency moeda;
 
+	public long quantia() {
+		return Math.round(quantia / fatorCentavos());
+	}
+	public Dinheiro vezes(int i) {
+		return novoDinheiro(this.quantia*i);
+	}
 	public Dinheiro(double quantia, Currency moeda){
 		this.moeda = moeda;		
 		this.quantia = Math.round(quantia * fatorCentavos());
@@ -61,8 +67,7 @@ public class Dinheiro {
 	}	
 	public static Dinheiro emReais(double quantia){
 		return new Dinheiro(quantia, Currency.getInstance("BRL"));
-	}	
-	
+	}		
 	
 	public boolean equals (Object outro){
 		return (outro instanceof Dinheiro ) && 
@@ -79,11 +84,5 @@ public class Dinheiro {
 	private static final int[] centavos = new int[]{1, 10, 100, 1000};
 	private int fatorCentavos(){
 		return centavos[moeda.getDefaultFractionDigits()];
-	}
-	public long quantia() {
-		return Math.round(quantia / fatorCentavos());
-	}
-	public void vezes(int i) {
-		this.quantia*=i;
 	}
 }    

@@ -26,9 +26,9 @@ public class DinheiroTest {
 		assertEquals(350-100, grana.quantia());
 	}
 	@Test
-	public void novoVezesCinco(){
+	public void multiplicador(){
 		Dinheiro grana = new Dinheiro(100);
-		grana.vezes(5);
+		grana = grana.vezes(5);
 		assertEquals(5*100, grana.quantia());
 	}
 }
