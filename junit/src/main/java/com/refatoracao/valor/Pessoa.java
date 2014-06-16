@@ -6,6 +6,7 @@ public class Pessoa {
 	private Peso peso;
 	private Altura altura;
 	private Cpf cpf;
+	private Endereco endereco;
 	
 	public Pessoa(String primeiroNome, String sobrenome) {
 		this.nome = new Nome(primeiroNome, sobrenome);
@@ -38,7 +39,16 @@ public class Pessoa {
 		this.nome = new Nome(primeiroNome, sobrenome);
 		this.cpf = cpf;
 	}
+
+	public Pessoa(String primeiroNome, String sobrenome, Cpf cpf, String rua, String cidade, String uf, String pais, String cep) {
+		this.nome = new Nome(primeiroNome, sobrenome);
+		this.endereco = new Endereco(rua, cidade, uf, pais, cep);
+	}
 	
+	public Endereco endereco(){
+		return endereco;
+	}
+
 	public Cpf cpf(){
 		return cpf;
 	}
@@ -118,6 +128,13 @@ public class Pessoa {
 		if(altura == null)
 			throw new IllegalArgumentException("Altura n�o pode ser nula");
 		this.altura = altura;
+	}
+
+	public void alterarEndereco(String rua, String cidade, String uf,
+			String pais, String cep) {
+		if(rua == null || cidade == null || uf == null || pais == null || cep == null)
+			throw new IllegalArgumentException("Informações do endereço não podem ser nulas");
+		endereco = endereco.alterarEndereco(rua, cidade, uf, pais, cep);
 	}
 
 }
