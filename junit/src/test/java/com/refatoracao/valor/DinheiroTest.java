@@ -1,8 +1,6 @@
 package com.refatoracao.valor;
 
-import static org.junit.Assert.*;
-
-import java.util.Currency;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
