@@ -4,7 +4,7 @@ import java.util.Currency;
 
 
 public class Dinheiro {
-	private long quantia;
+	private double quantia;
 	private Currency moeda;
 
 	public long quantia() {
@@ -30,7 +30,7 @@ public class Dinheiro {
 	public Currency moeda(){
 		return moeda;
 	}
-	public long valor(){
+	public double valor(){
 		return this.quantia;
 	}
 
@@ -52,7 +52,7 @@ public class Dinheiro {
 		else return 1;
 	}
 	
-	private Dinheiro novoDinheiro(long quantia) {
+	private Dinheiro novoDinheiro(double quantia) {
 		Dinheiro dinheiro = new Dinheiro();
 		dinheiro.moeda = this.moeda;
 		dinheiro.quantia = quantia;
@@ -78,7 +78,7 @@ public class Dinheiro {
 				(quantia == outro.quantia);
 	}
 	public int hashCode(){
-		return (int) (quantia ^ (quantia >>> 32));
+		return (int) (quantia * (quantia * 32));
 	}
 	
 	private static final int[] centavos = new int[]{1, 10, 100, 1000};
