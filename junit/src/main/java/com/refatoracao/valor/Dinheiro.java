@@ -1,37 +1,45 @@
 package com.refatoracao.valor;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Currency;
+import java.util.Locale;
 
 
 public class Dinheiro {
 	private double quantia;
 	private Currency moeda;
-
-	public long quantia() {
-		return Math.round(quantia / fatorCentavos());
+	private Locale local;
+	
+	public String toString(){
+		DecimalFormatSymbols simbolo = new DecimalFormatSymbols(local);    
+		DecimalFormat formato = new DecimalFormat("¤ ###,###,##0.00",simbolo); 
+		return formato.format(valor());    
+	}
+	public double valor() {
+		return quantia / fatorCentavos();
 	}
 	public Dinheiro vezes(int i) {
 		return novoDinheiro(this.quantia*i);
 	}
 	public Dinheiro(double quantia, Currency moeda){
-		this.moeda = moeda;		
-		this.quantia = Math.round(quantia * fatorCentavos());
-	}
-	public Dinheiro(long quantia, Currency moeda){
-		this.moeda = moeda;		
-		this.quantia = quantia * fatorCentavos();	
-	}
-	public Dinheiro(double quantia){
-		this.moeda = Currency.getInstance("BRL");		
+		setMoeda(moeda);		
 		this.quantia = Math.round(quantia * fatorCentavos());
 	}
 	public Dinheiro() {
 	}
+	private void setMoeda(Currency moeda) {
+		
+		this.moeda = moeda;
+
+		if (moeda.getCurrencyCode()=="USD")
+			this.local = Locale.US;			
+		else 
+			this.local = new Locale("pt","BR");
+		
+	}
 	public Currency moeda(){
 		return moeda;
-	}
-	public double valor(){
-		return this.quantia;
 	}
 
 	public Dinheiro adicionar(Dinheiro novaQuantia){
@@ -55,6 +63,7 @@ public class Dinheiro {
 	private Dinheiro novoDinheiro(double quantia) {
 		Dinheiro dinheiro = new Dinheiro();
 		dinheiro.moeda = this.moeda;
+		dinheiro.local = this.local;
 		dinheiro.quantia = quantia;
 		return dinheiro;
 	}
