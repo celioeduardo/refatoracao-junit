@@ -94,4 +94,10 @@ public class Dinheiro {
 	private int fatorCentavos(){
 		return centavos[moeda.getDefaultFractionDigits()];
 	}
+	public Dinheiro adicionarPercentual(double percentagem) {
+		return novoDinheiro(this.quantia + (this.quantia * (percentagem / 100)));
+	}
+	public Dinheiro subtrairPercentual(double percentagem) {
+		return novoDinheiro(this.quantia - (this.quantia * (percentagem / 100)));
+	}
 }    
