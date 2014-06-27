@@ -8,35 +8,28 @@ public class DinheiroTest {
 
 	@Test
 	public void novoDinheiroEmReais(){
-		Dinheiro grana = Dinheiro.emReais(100);
-		assertEquals(Dinheiro.emReais(100),grana);
+		assertEquals(Dinheiro.emReais(100),Dinheiro.emReais(100));
 	}
 	@Test
 	public void somarDinheiro(){
-		Dinheiro grana = Dinheiro.emReais(100);
-		grana = grana.adicionar(Dinheiro.emReais(350));
-		assertEquals(Dinheiro.emReais(450),grana);
+		assertEquals(Dinheiro.emReais(450),Dinheiro.emReais(100).adicionar(Dinheiro.emReais(350)));
+	}
+	@Test
+	public void somarPercentualDinheiro(){
+		assertEquals(Dinheiro.emReais(105),Dinheiro.emReais(100).adicionarPercentual(5));
 	}
 	@Test
 	public void subtrairDinheiro(){
-		Dinheiro grana = Dinheiro.emReais(350);
-		grana = grana.subtrair(Dinheiro.emReais(100));
-		assertEquals(Dinheiro.emReais(250),grana);
+		assertEquals(Dinheiro.emReais(250),Dinheiro.emReais(350).subtrair(Dinheiro.emReais(100)));
 	}
 	@Test
 	public void multiplicarDinheiro(){
-		Dinheiro grana = Dinheiro.emReais(100);
-		grana = grana.vezes(5);
-		assertEquals(Dinheiro.emReais(500),grana);
+		assertEquals(Dinheiro.emReais(500),Dinheiro.emReais(100).vezes(5));
 	}
 	@Test
 	public void igualdadeMoeda(){
-		Dinheiro dolar = Dinheiro.emDolares(100);
-		dolar = dolar.vezes(5);
-		assertEquals(Dinheiro.emDolares(500), dolar);
-		Dinheiro real = Dinheiro.emReais(100);
-		real = real.vezes(5);
-		assertEquals(Dinheiro.emReais(500), real);
+		assertEquals(Dinheiro.emDolares(500), Dinheiro.emDolares(100).vezes(5));
+		assertEquals(Dinheiro.emReais(500), Dinheiro.emReais(100).vezes(5));
 	}
 	@Test(expected=IllegalArgumentException.class)
 	public void naoPossoSomarMoedasDiferentes(){
