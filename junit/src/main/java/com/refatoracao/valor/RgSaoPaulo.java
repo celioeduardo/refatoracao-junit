@@ -18,10 +18,12 @@ public class RgSaoPaulo extends Rg{
 			throw new NumberFormatException("Formato de RG incorreto para o estado de São Paulo.");		
 	}
 
+	@Override
 	protected String higienizar(String rg) {
 		return String.format("%10s", rg.replaceAll("\\.|-", "")).replace(" ", "0");
 	}
 
+	@Override
 	protected void validar() {
 		int v = 0;
 		
