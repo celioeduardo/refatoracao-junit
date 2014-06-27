@@ -7,6 +7,7 @@ public class Pessoa {
 	private Altura altura;
 	private Cpf cpf;
 	private Endereco endereco;
+	private Dinheiro salario;
 	
 	public Pessoa(String primeiroNome, String sobrenome) {
 		this.nome = new Nome(primeiroNome, sobrenome);
@@ -127,12 +128,33 @@ public class Pessoa {
 	
 	private void setAltura(Altura altura){
 		if(altura == null)
-			throw new IllegalArgumentException("Altura n�o pode ser nula");
+			throw new IllegalArgumentException("Altura não pode ser nula");
 		this.altura = altura;
 	}
 
 	public void alterarEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public void novoSalario(Dinheiro salario) {
+		this.salario = salario;		
+	}
+
+	public Dinheiro salarioAtual() {
+		return this.salario;
+	}
+
+	public void aumentoSalarial(Dinheiro aumento) {
+		this.salario = this.salario.adicionar(aumento);		
+	}
+	public void diminuicaoSalarial(Dinheiro decrescimo) {
+		this.salario = this.salario.subtrair(decrescimo);		
+	}
+	public void aumentoSalarial(double percentagem) {
+		this.salario = this.salario.adicionarPercentual(percentagem);
+	}
+	public void diminuicaoSalarial(double percentagem) {
+		this.salario = this.salario.subtrairPercentual(percentagem);
 	}
 
 }
