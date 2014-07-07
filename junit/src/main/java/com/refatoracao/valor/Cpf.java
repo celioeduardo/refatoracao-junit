@@ -12,7 +12,7 @@ public class Cpf {
 	public Cpf(String cpf) {
 		this.cpf = cpf;
 		if (!this.eValido(cpf))
-			throw new IllegalArgumentException("CPF inv·lido");
+			throw new IllegalArgumentException("CPF inv√°lido");
 	}
 
 	public Cpf(long cpf) {
