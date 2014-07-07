@@ -8,14 +8,14 @@ public class Cnpj {
 	public Cnpj(String cnpj) {
 		this.cnpj = cnpj;
 		if (!this.ehValido(this.cnpj.replace(".", "").replace("/", "").replace("-", ""))) {
-			throw new IllegalArgumentException("CNPJ inv·lido.");
+			throw new IllegalArgumentException("CNPJ inv√°lido.");
 		}
 	}
 	
 	public Cnpj(Long cnpj) {
 		this.cnpj =  String.valueOf(cnpj);
 		if (!this.ehValido(this.cnpj)) {
-			throw new IllegalArgumentException("CNPJ inv·lido.");
+			throw new IllegalArgumentException("CNPJ inv√°lido.");
 		}
 	}
 
