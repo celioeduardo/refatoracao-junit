@@ -1,14 +1,14 @@
-package com.refatoracao.valor;
+package com.refatoracao.valor.rg;
 
 import java.util.regex.Pattern;
 
-public class RgSaoPaulo extends Rg{
+class RgSaoPaulo extends Rg{
 	
-	public RgSaoPaulo(String rg) {
+	RgSaoPaulo(String rg) {
 		super(rg);
 	}
 	
-	public RgSaoPaulo(long rg) {
+	RgSaoPaulo(long rg) {
 		super(String.valueOf(rg));
 	}
 	

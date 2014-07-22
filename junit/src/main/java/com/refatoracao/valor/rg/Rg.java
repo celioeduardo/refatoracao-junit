@@ -1,9 +1,22 @@
-package com.refatoracao.valor;
+package com.refatoracao.valor.rg;
 
 public abstract class Rg {
 	protected String rg;
 	
-	public Rg(String rg) {
+	public static Rg novo(String rg, Estado estado){
+		switch (estado) {
+		case SAO_PAULO:
+			return new RgSaoPaulo(rg);
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public static Rg novo(long numero,Estado estado) {
+		return novo(String.valueOf(numero),estado);
+	}
+
+	Rg(String rg) {
 		validarFormatacao(rg);
 		this.rg = higienizar(rg);		
 		validar();

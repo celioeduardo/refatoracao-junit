@@ -1,59 +1,61 @@
-package com.refatoracao.valor;
+package com.refatoracao.valor.rg;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.refatoracao.valor.rg.Rg;
 
 public class RgTest {
 	Rg rgEsperado;
 	
 	@Before
 	public void incializacao() {
-		rgEsperado = new RgSaoPaulo("44.950.085-8");
+		rgEsperado = Rg.novo("44.950.085-8",Estado.SAO_PAULO);
 	}
 	
 	@Test
 	public void novoRgSaoPauloFormatado(){
-		Assert.assertEquals(rgEsperado, new RgSaoPaulo("44.950.085-8"));
+		Assert.assertEquals(rgEsperado, Rg.novo("44.950.085-8",Estado.SAO_PAULO));
 	}
 	
 	@Test
 	public void novoRgSaoPauloNaoFormatado(){
-		Assert.assertEquals(rgEsperado, new RgSaoPaulo("449500858"));
+		Assert.assertEquals(rgEsperado, Rg.novo("449500858",Estado.SAO_PAULO));
 	}
 	
 	@Test
 	public void novoRgSaoPauloFormatadoComZeroAEsquerda(){
-		Assert.assertEquals(rgEsperado, new RgSaoPaulo("044.950.085-8"));
+		Assert.assertEquals(rgEsperado, Rg.novo("044.950.085-8",Estado.SAO_PAULO));
 	}
 	
 	@Test
 	public void novoRgSaoPauloNaoFormatadoComZeroAEsquerda(){
-		Assert.assertEquals(rgEsperado, new RgSaoPaulo("0449500858"));
+		Assert.assertEquals(rgEsperado, Rg.novo("0449500858",Estado.SAO_PAULO));
 	}
 
 	@Test
 	public void novoRgSaoPauloComLong(){
-		Assert.assertEquals(rgEsperado, new RgSaoPaulo(449500858L));
+		Assert.assertEquals(rgEsperado, Rg.novo(449500858L,Estado.SAO_PAULO));
 	}
 
 	@Test(expected=IllegalArgumentException.class)
 	public void novoRgInvalidoEmSaoPaulo(){
-		new RgSaoPaulo("00.000.000-0");
+		Rg.novo("00.000.000-0",Estado.SAO_PAULO);
 	}
 	
 	@Test(expected=NumberFormatException.class)
 	public void novoRgFormatacaoInvalidaEmSaoPaulo_1(){
-		new RgSaoPaulo("ab.950.085-8");
+		Rg.novo("ab.950.085-8",Estado.SAO_PAULO);
 	}
 	
 	@Test(expected=NumberFormatException.class)
 	public void novoRgFormatacaoInvalidaEmSaoPaulo_2(){
-		new RgSaoPaulo("44.495.008-58");
+		Rg.novo("44.495.008-58",Estado.SAO_PAULO);
 	}
 	
 	@Test(expected=NumberFormatException.class)
 	public void novoRgFormatacaoInvalidaEmSaoPaulo_3(){
-		new RgSaoPaulo("44495.008-8");
+		Rg.novo("44495.008-8",Estado.SAO_PAULO);
 	}
 }

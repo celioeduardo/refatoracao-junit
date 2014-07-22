@@ -35,7 +35,6 @@ public class CalcadoTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void aumentaNumeracaoMenor(){
 		calcado = calcado.aumentaNumeracao(40.0);
-		assertEquals(new Calcado("Tenis", 40.0), calcado);
 	}
 	
 	@Test
@@ -47,7 +46,6 @@ public class CalcadoTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void diminuiNumeracaoMaior(){
 		calcado = calcado.diminuiNumeracao(43.0);
-		assertEquals(new Calcado("Tenis", 43.0), calcado);
 	}
 	
 }
